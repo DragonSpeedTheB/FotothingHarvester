@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotothing", "Fotothing.csproj", "{FDBDD7B2-E536-4910-8344-CC71FE27984A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDBDD7B2-E536-4910-8344-CC71FE27984A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDBDD7B2-E536-4910-8344-CC71FE27984A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDBDD7B2-E536-4910-8344-CC71FE27984A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDBDD7B2-E536-4910-8344-CC71FE27984A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91626341-8AB7-480C-88EB-F3C58047F549}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/alsgeochemistry
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Fotothing.csproj
+		SccLocalPath1 = .
+	EndGlobalSection
+EndGlobal
