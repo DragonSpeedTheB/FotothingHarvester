@@ -14,6 +14,7 @@ namespace Fotothing
         List<string> linkList = new List<string>();
         string BaseDir = "";
         int completed = 0;
+        bool stilltoharvest = true;
         public FotothingHarvester()
         {
             InitializeComponent();
@@ -76,7 +77,7 @@ namespace Fotothing
                 UseCookies = true
             };
             handler.CookieContainer = cookieContainer;
-
+            var linkcount = 0;
             using (HttpClient client = new HttpClient(handler))
             {
                 //ParallelOptions options = new ParallelOptions
@@ -86,7 +87,7 @@ namespace Fotothing
                 
                 foreach (var link in links)
                 {
-                    
+                    linkcount++;
                     var imagename = link.Substring(link.LastIndexOf("/") + 1);
                     var fileName = BaseDir + imagename;
                     if (!File.Exists(fileName))
@@ -141,10 +142,24 @@ namespace Fotothing
             }
             if (TryAgainList.Count > 0)
                 HarvestImages(TryAgainList);
+            if (completed < links.Count)
+            {
+                SetStatus("Need to cycle through again and catch some that failed.");
+                stilltoharvest = true;
+            }
+            else
+            {
+                stilltoharvest = false;
+                progressBar1.Value = 100;
+                SetStatus("All photos harvested!");
+            }
+
         }
+
 
         private void GetLinks()
         {
+            linkList.Clear();
             int page = 0;
             while (true)
             {
@@ -226,18 +241,22 @@ namespace Fotothing
         private void GoButton_Click(object sender, EventArgs e)
         {
             if (UserTxt.Text.Trim().Length > 0 && PwdTxt.Text.Trim().Length > 0 && Directory.Exists(TargetFolder.Text))
-                if (AuthtoFotothing())
+                while (stilltoharvest)
                 {
-                    SetStatus("Authenticated");
-                    GetLinks();
-
-                    if (linkList.Count() > 0)
+                    if (AuthtoFotothing())
                     {
-                        SetStatus("There are " + linkList.Count + " photos to harvest");
-                        HarvestImages(linkList);
+                        SetStatus("Authenticated");
+                        GetLinks();
+
+                        if (linkList.Count() > 0)
+                        {
+                            SetStatus("There are " + linkList.Count + " photos to harvest");
+                            HarvestImages(linkList);
+                        }
+                        else
+                            SetStatus("Unable to find any photos to harvest");
+
                     }
-                    else
-                        SetStatus("Unable to find any photos to harvest");
                 }
         }
 
