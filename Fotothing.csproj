@@ -16,6 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fotothing.dll" />
+    <None Remove="Fotothing.exe" />
+    <None Remove="HtmlAgilityPack.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
   </ItemGroup>
 
